@@ -14,8 +14,8 @@ function createMainWindow() {
         width: 500,
         height: 600,
         icon: './assets/icons/Icon_256x256.png',
-        resizable: isDev ? true : false,
-        backgroundColor: 'white',
+        resizable: isDev,
+        
     });
 
     mainWindow.loadFile('./app/index.html');
@@ -38,15 +38,19 @@ app.on('ready', () => {
 const menu = [
     ...(isMac ? [{ role: 'appMenu' }] : []),
     {
-        label: 'File',
-        submenu: [
-            {
-                label: 'Quit',
-                accelerator: 'CmdOrCtrl+W',
-                click: () => app.quit(),
-            },
-        ],
+        role: 'fileMenu',
     },
+    ...(isDev ? [
+        {
+            label: 'Developer',
+            submenu: [
+                {role: 'reload'},
+                {role: 'forcereload'},
+                {type: 'separator'},
+                {role: 'toggledevtools'},
+            ]
+        }
+    ])
 ];
 
 app.on('window-all-closed', () => {
