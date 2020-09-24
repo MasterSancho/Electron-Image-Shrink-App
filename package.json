@@ -4,11 +4,13 @@
     "description": "App to optimaze images",
     "main": "main.js",
     "scripts": {
-        "start": "electron ."
+        "start": "electron .",
+        "dev": "nodemon --exec electron ."
     },
     "author": "Brad Traversy",
     "license": "MIT",
     "devDependencies": {
-        "electron": "^10.1.2"
+        "electron": "^10.1.2",
+        "nodemon": "^2.0.4"
     }
 }
